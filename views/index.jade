@@ -27,18 +27,12 @@ block content
         h1.ui.header I want to see some results!
         form.ui.form(action="infosubmit" method="post")
           .field
-            label Applicant Name
-            input(type="text" name="applicantName" placeholder="Name")
-          .field
-            label Applicant Email
-            input(type="text" name="applicantEmail" placeholder="Email")
-          .field
-            label Redirect URL
-            input(type="text" name="redirectUrl" placeholder="Redirect URL")
-          .field
             label Client Id
             input(type="text" name="clientId" placeholder="Client Id")
           .field
             label Api Key
             input(type="text" name="apiKey" placeholder="Api Key")
+          .field
+            label Game Id
+            input(type="text" name="gameId" placeholder="Game Id")
           button.ui.primary.button(type="submit") Show
