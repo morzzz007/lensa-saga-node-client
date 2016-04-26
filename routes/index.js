@@ -17,8 +17,6 @@ router.get('/results', function(req, res, next) {
 router.post('/infosubmit', function(req, res, next) {
   const ajv = Ajv();
   const fields = req.body;
-
-  // input validation
   const valid = ajv.validate(validator.schema, fields);
 
   if (!valid) {
@@ -26,14 +24,11 @@ router.post('/infosubmit', function(req, res, next) {
   } else {
     const token = jwt.sign({ id: fields.clientId }, fields.apiKey);
     const encoded = base64.encode(`${fields.clientId}:${token}`);
-    console.log(encoded, request.connection.remoteAddress);
 
     request({
       url: 'https://pooledlabs.com/saga-api/make_game_request',
       method: 'post',
-      headers: {
-        'Authorization': `Bearer ${encoded}`
-      },
+      headers: { 'Authorization': `Bearer ${encoded}` },
       json: {
         ipaddress: req.connection.remoteAddress,
         name: fields.applicantName,
@@ -41,14 +36,15 @@ router.post('/infosubmit', function(req, res, next) {
         redirect_url: fields.redirectUrl
       }
     }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body) // Show the HTML for the Google homepage.
-      }
-    })
+      res.render('results', { response: body });
+      // res.redirect('http://lensa.com');
 
-    res.redirect('http://lensa.com');
+      // if (!error && response.statusCode == 200) {
+        // console.log(body) // Show the HTML for the Google homepage.
+      // }
+    });
+
   }
-
 });
 
 module.exports = router;
