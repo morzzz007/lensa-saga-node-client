@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .ui.fixed.inverted.menu
+    .ui.container
+      a.header.item(href="#")
+        img.logo(src="/images/logo.png")
+        | Saga Node Sample App
+  .ui.main.text.container
+    h1.ui.header Hello Lensa, I want to play a game!
+    form.ui.form(action="infosubmit" method="post")
+      .field
+        label Applicant Name
+        input(type="text" name="applicantName" placeholder="Name")
+      .field
+        label Applicant Email
+        input(type="text" name="applicantEmail" placeholder="Email")
+      .field
+        label Redirect URL
+        input(type="text" name="redirectUrl" placeholder="Redirect URL")
+      .field
+        label Client Id
+        input(type="text" name="clientId" placeholder="Client Id")
+      .field
+        label Api Key
+        input(type="text" name="apiKey" placeholder="Api Key")
+      button.ui.button(type="submit") Play

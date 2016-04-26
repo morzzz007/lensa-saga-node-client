@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .ui.fixed.inverted.menu
+    .ui.container
+      a.header.item(href="#")
+        img.logo(src="/images/logo.png")
+        | Saga Node Sample App
+  .ui.main.text.container
+    h1 Input error
+    pre= message
+    img.ui.fluid.image(src="/images/error.gif")
