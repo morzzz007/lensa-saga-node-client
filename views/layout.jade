@@ -6,6 +6,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1")
     title= title
     link(rel='stylesheet', href='/stylesheets/semantic.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .ui.fixed.inverted.menu
@@ -13,4 +14,8 @@ html
         a.header.item(href="#")
           img.logo(src="/images/logo.png")
           | Saga Node Sample App
+        .right.menu
+          a.item(href="https://github.com/morzzz007/lensa-saga-node-client") 
+            i.fa.fa-github(style="margin-right: 5px")
+            |  Fork me on Github
     block content
