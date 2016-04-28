@@ -31,8 +31,7 @@ router.post('/infosubmit', function(req, res, next) {
     const encoded = base64.encode(`${fields.clientId}:${token}`);
     const url = req.body.useProduction ? PRODUCTION_URL : STAGING_URL;
 
-    console.log('My remote address', req.connection)
-    console.log('My remote address', req.connection.remoteAddress)
+    console.log('My remote address', req.ip)
 
     request({
       url,
