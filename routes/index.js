@@ -92,28 +92,7 @@ router.post('/getresultsubmit', function(req, res, next) {
   if (!valid) {
     res.render('validation', { message: ajv.errorsText() });
   } else {
-    const token = jwt.sign({ id: SAMPLE_CLIENTID }, SAMPLE_APIKEY);
-    const encoded = base64.encode(`${SAMPLE_CLIENTID}:${token}`);
-
-    request({
-      url: `${GET_RESULTS_URL}/${fields.gameId}`,
-      method: 'get',
-      headers: { 'Authorization': `Bearer ${encoded}` },
-    }, function (error, response, body) {
-      const results = JSON.parse(body);
-      if (!error && response.statusCode == 200) {
-        res.render('results', {
-          response: JSON.stringify(body),
-          archetypeImg: results.game_stats.archetype.toLowerCase(),
-          archetype: results.game_stats.archetype,
-          nineDimensions: results.game_stats['9dimension'],
-          fourDimensions: results.game_stats['4dimension'],
-        });
-      } else {
-        res.render('validation', { message: JSON.stringify(body) });
-      }
-    });
-
+    res.redirect(`/results?game_id=${fields.gameId}`);
   }
 });
 
