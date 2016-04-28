@@ -14,7 +14,6 @@ const GAME_REQUEST_URL = 'https://pooledlabs.com/saga-api/make_game_request';
 const GET_RESULTS_URL = 'https://pooledlabs.com/saga-api/get_game_stats';
 
 router.get('/', function(req, res, next) {
-  console.log('aaaa', req.headers.host)
   res.render('index', {
     title: 'Saga Node Client',
     clientId: SAMPLE_CLIENTID,
