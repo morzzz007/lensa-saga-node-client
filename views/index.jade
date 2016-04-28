@@ -17,22 +17,26 @@ block content
             input(type="text" name="redirectUrl" placeholder="Redirect URL")
           .field
             label Client Id
-            input(type="text" name="clientId" placeholder="Client Id")
+            input(type="text" name="clientId" placeholder="Client Id" value=clientId)
           .field
             label Api Key
-            input(type="text" name="apiKey" placeholder="Api Key")
+            input(type="text" name="apiKey" placeholder="Api Key" value=apiKey)
+          .field
+            .ui.toggle.checkbox
+              input(type="checkbox" name="useProduction")
+              label Use production API
           button.ui.primary.button(type="submit") Play
       .ui.horizontal.divider Or
       .column
         h1.ui.header I want to see some results!
         form.ui.form(action="infosubmit" method="post")
           .field
-            label Client Id
-            input(type="text" name="clientId" placeholder="Client Id")
-          .field
-            label Api Key
-            input(type="text" name="apiKey" placeholder="Api Key")
-          .field
             label Game Id
             input(type="text" name="gameId" placeholder="Game Id")
+          .field
+            label Client Id
+            input(type="text" name="clientId" placeholder="Client Id" value=clientId)
+          .field
+            label Api Key
+            input(type="text" name="apiKey" placeholder="Api Key" value=apiKey)
           button.ui.primary.button(type="submit") Show
