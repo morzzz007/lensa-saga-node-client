@@ -31,14 +31,14 @@ router.post('/infosubmit', function(req, res, next) {
     const encoded = base64.encode(`${fields.clientId}:${token}`);
     const url = req.body.useProduction ? PRODUCTION_URL : STAGING_URL;
 
-    console.log('My remote address', req.ip)
+    console.log('My remote address', req.ip);
 
     request({
       url,
       method: 'post',
       headers: { 'Authorization': `Bearer ${encoded}` },
       json: {
-        ipaddress: req.connection.remoteAddress,
+        ipaddress: req.ip,
         name: fields.applicantName,
         email: fields.applicantEmail,
         redirect_url: fields.redirectUrl
