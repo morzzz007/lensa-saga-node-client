@@ -2,6 +2,63 @@ extends layout
 
 block content
   .ui.main.text.container
-    h1 Results
-    p= response
-    img.ui.fluid.image(src="/images/success.gif")
+    .ui.one.column.very.relaxed.stackable.grid
+      .column
+        img.ui.middle.aligned.tiny.spaced.image(src="/images/badges/" + archetype + ".png")
+        span=archetype
+        .ui.divider
+      .column
+        h2 4 dimensions
+        table.ui.celled.table
+          thead
+            tr
+              th Name
+              th Score
+          tbody
+            tr
+              td Solution finding
+              td=fourDimensions.solutionfinding
+            tr
+              td Generalism
+              td=fourDimensions.generalism
+            tr
+              td Preferred Solution
+              td=fourDimensions.preferredsolution
+            tr
+              td Goalorientation
+              td=fourDimensions.goalorientation
+        .ui.divider
+        h2 9 dimensions
+        table.ui.celled.table
+          thead
+            tr
+              th Name
+              th Score
+          tbody
+            tr
+              td Problem solving
+              td=nineDimensions.problemsolving
+            tr
+              td Precise
+              td=nineDimensions.precise
+            tr
+              td Efficiency
+              td=nineDimensions.efficiency
+            tr
+              td Speed
+              td=nineDimensions.speed
+            tr
+              td Resilience
+              td=nineDimensions.resilience
+            tr
+              td Ingenuity
+              td=nineDimensions.ingenuity
+            tr
+              td Gogetter
+              td=nineDimensions.gogetter
+            tr
+              td Perseverance
+              td=nineDimensions.perseverance
+            tr
+              td Strategical thinking
+              td=nineDimensions.strategicalthinking

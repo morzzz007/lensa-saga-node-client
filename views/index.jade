@@ -5,7 +5,7 @@ block content
     .ui.one.column.middle.aligned.very.relaxed.stackable.grid
       .column
         h1.ui.header Hello Lensa, I want to play a game!
-        form.ui.form(action="infosubmit" method="post")
+        form.ui.form(action="gamerequestsubmit" method="post")
           .field
             label Applicant Name
             input(type="text" name="applicantName" placeholder="Name")
@@ -14,25 +14,25 @@ block content
             input(type="text" name="applicantEmail" placeholder="Email")
           .field
             label Sample Client Id
-            div=clientId
+            div.ui.orange.horizontal.label=clientId
           .field
             label Sample Api Key
-            div=apiKey
+            div.ui.orange.horizontal.label=apiKey
           .field
             label Sample Redirect URL
-            div=returnUrl
+            div.ui.orange.horizontal.label=returnUrl
           button.ui.primary.button(type="submit") Play
       .ui.horizontal.divider Or
       .column
         h1.ui.header I want to see some results!
-        form.ui.form(action="resultsubmit" method="post")
+        form.ui.form(action="getresultsubmit" method="post")
           .field
             label Game Id
             input(type="text" name="gameId" placeholder="Game Id")
           .field
             label Sample Client Id
-            div=clientId
+            div.ui.orange.horizontal.label=clientId
           .field
             label Sample Api Key
-            div=apiKey
+            div.ui.orange.horizontal.label=apiKey
           button.ui.primary.button(type="submit") Show
