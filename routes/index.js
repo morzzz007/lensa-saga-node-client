@@ -42,12 +42,11 @@ router.post('/infosubmit', function(req, res, next) {
         redirect_url: fields.redirectUrl
       }
     }, function (error, response, body) {
-      res.render('results', { response: body });
-      // res.redirect('http://lensa.com');
-
-      // if (!error && response.statusCode == 200) {
-        // console.log(body) // Show the HTML for the Google homepage.
-      // }
+      if (!error && response.statusCode == 200) {
+        res.redirect(response.redirect_url);
+      } else {
+        res.render('validation', { message: JSON.stringify(body) });
+      }
     });
 
   }
