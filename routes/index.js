@@ -13,7 +13,7 @@ const SAMPLE_APIKEY = 'zvScPOrGXpCD8Ny1nMgTr1DER4P+GplGEUSBbzvG1utY/wqH3fdNyg';
 const GAME_REQUEST_URL = 'https://pooledlabs.com/saga-api/make_game_request';
 const GET_RESULTS_URL = 'https://pooledlabs.com/saga-api/get_game_stats';
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res) => {
   res.render('index', {
     title: 'Saga Node Client',
     clientId: SAMPLE_CLIENTID,
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/results', function(req, res, next) {
+router.get('/results', (req, res) => {
   const fields = req.query;
   const valid = ajv.validate(validator.resultSchema, fields);
 
@@ -35,10 +35,10 @@ router.get('/results', function(req, res, next) {
     request({
       url: `${GET_RESULTS_URL}/${fields.game_id}`,
       method: 'get',
-      headers: { 'Authorization': `Bearer ${encoded}` },
-    }, function (error, response, body) {
+      headers: { Authorization: `Bearer ${encoded}` },
+    }, (error, response, body) => {
       const results = JSON.parse(body);
-      if (!error && response.statusCode == 200) {
+      if (!error && response.statusCode === 200) {
         res.render('results', {
           response: JSON.stringify(body),
           archetypeImg: results.game_stats.archetype.toLowerCase(),
@@ -50,11 +50,10 @@ router.get('/results', function(req, res, next) {
         res.render('validation', { message: JSON.stringify(body) });
       }
     });
-
   }
 });
 
-router.post('/gamerequestsubmit', function(req, res, next) {
+router.post('/gamerequestsubmit', (req, res) => {
   const fields = req.body;
   const valid = ajv.validate(validator.gameSchema, fields);
 
@@ -65,27 +64,26 @@ router.post('/gamerequestsubmit', function(req, res, next) {
     const encoded = base64.encode(`${SAMPLE_CLIENTID}:${token}`);
 
     request({
-      url : GAME_REQUEST_URL,
+      url: GAME_REQUEST_URL,
       method: 'post',
-      headers: { 'Authorization': `Bearer ${encoded}` },
+      headers: { Authorization: `Bearer ${encoded}` },
       json: {
         ipaddress: req.ip,
         name: fields.applicantName,
         email: fields.applicantEmail,
         redirect_url: `https://${req.headers.host}/results/`,
       }
-    }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
+    }, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
         res.redirect(body.redirect_url);
       } else {
         res.render('validation', { message: JSON.stringify(body) });
       }
     });
-
   }
 });
 
-router.post('/getresultsubmit', function(req, res, next) {
+router.post('/getresultsubmit', (req, res) => {
   const fields = req.body;
   const valid = ajv.validate(validator.resultSchema, fields);
 
