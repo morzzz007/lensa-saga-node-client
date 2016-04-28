@@ -1,5 +1,5 @@
 module.exports = {
-  schema: {
+  gameSchema: {
     'properties': {
       'applicantName': {
         'type': 'string',
@@ -9,15 +9,11 @@ module.exports = {
         'type': 'string',
         'format': 'email'
       },
-      'redirectUrl': {
-        'type': 'string',
-        'minLength': 1
-      },
-      'clientId': {
-        'type': 'string',
-        'minLength': 1
-      },
-      'apiKey': {
+    }
+  },
+  resultSchema: {
+    'properties': {
+      'gameId': {
         'type': 'string',
         'minLength': 1
       },

@@ -13,14 +13,14 @@ block content
             label Applicant Email
             input(type="text" name="applicantEmail" placeholder="Email")
           .field
-            label Redirect URL
-            input(type="text" name="redirectUrl" placeholder="Redirect URL")
+            label Sample Client Id
+            div=clientId
           .field
-            label Client Id
-            input(type="text" name="clientId" placeholder="Client Id" value=clientId)
+            label Sample Api Key
+            div=apiKey
           .field
-            label Api Key
-            input(type="text" name="apiKey" placeholder="Api Key" value=apiKey)
+            label Sample Redirect URL
+            div=returnUrl
           .field
             .ui.toggle.checkbox
               input(type="checkbox" name="useProduction")
@@ -29,14 +29,14 @@ block content
       .ui.horizontal.divider Or
       .column
         h1.ui.header I want to see some results!
-        form.ui.form(action="infosubmit" method="post")
+        form.ui.form(action="resultsubmit" method="post")
           .field
             label Game Id
             input(type="text" name="gameId" placeholder="Game Id")
           .field
-            label Client Id
-            input(type="text" name="clientId" placeholder="Client Id" value=clientId)
+            label Sample Client Id
+            div=clientId
           .field
-            label Api Key
-            input(type="text" name="apiKey" placeholder="Api Key" value=apiKey)
+            label Sample Api Key
+            div=apiKey
           button.ui.primary.button(type="submit") Show
